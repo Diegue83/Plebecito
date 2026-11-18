@@ -12,7 +12,8 @@ class ServicioVotacion {
     required String idOpcion,
   }) {
     final opcion = _buscarOpcion(idOpcion);
-    opcion!.votos++;
+    if (opcion == null) return ResultadoVoto.opcionInvalida;
+    opcion.votos++;
     return ResultadoVoto.exitoso;
   }
 
