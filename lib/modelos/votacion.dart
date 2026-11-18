@@ -6,5 +6,9 @@ class Votacion {
   final DateTime fechaCierre;
   final Set<String> votantes = {};
 
-  Votacion({required this.pregunta, required this.opciones, required this.fechaCierre});
+  Votacion({
+    required this.pregunta,
+    required this.opciones,
+    required this.fechaCierre,
+  });
 }
