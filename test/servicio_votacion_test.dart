@@ -16,25 +16,43 @@ Votacion _crearVotacionDePrueba({DateTime? fechaCierre}) {
 }
 
 void main() {
+  // RONDA 1
   test('registrar un voto valido incrementa el contador de esa opcion', () {
     final votacion = _crearVotacionDePrueba();
     final servicio = ServicioVotacion(votacion);
 
-    final resultado = servicio.registrarVoto(idUsuario: 'user1', idOpcion: 'op1');
+    final resultado =
+        servicio.registrarVoto(idUsuario: 'user1', idOpcion: 'op1');
 
     expect(resultado, ResultadoVoto.exitoso);
     expect(votacion.opciones[0].votos, 1);
   });
 
+  // RONDA 2
   test('votar por una opcion que no existe regresa opcionInvalida', () {
     final votacion = _crearVotacionDePrueba();
     final servicio = ServicioVotacion(votacion);
 
-    final resultado = servicio.registrarVoto(idUsuario: 'user1', idOpcion: 'no-existe');
+    final resultado =
+        servicio.registrarVoto(idUsuario: 'user1', idOpcion: 'no-existe');
 
     expect(resultado, ResultadoVoto.opcionInvalida);
   });
 
+  // RONDA 3
+  test('un mismo usuario no puede votar dos veces', () {
+    final votacion = _crearVotacionDePrueba();
+    final servicio = ServicioVotacion(votacion);
+
+    servicio.registrarVoto(idUsuario: 'user1', idOpcion: 'op1');
+    final segundoIntento =
+        servicio.registrarVoto(idUsuario: 'user1', idOpcion: 'op2');
+
+    expect(segundoIntento, ResultadoVoto.usuarioYaVoto);
+    expect(votacion.opciones[1].votos, 0); // op2 no debio incrementarse
+  });
+
+  // RONDA 4
   test('calcula el porcentaje de cada opcion correctamente', () {
     final votacion = _crearVotacionDePrueba();
     final servicio = ServicioVotacion(votacion);
@@ -60,7 +78,8 @@ void main() {
     expect(resultados.every((r) => r.porcentaje == 0), true);
   });
 
-    test('determinarGanador regresa la opcion con mas votos', () {
+  // RONDA 5
+  test('determinarGanador regresa la opcion con mas votos', () {
     final votacion = _crearVotacionDePrueba();
     final servicio = ServicioVotacion(votacion);
     servicio.registrarVoto(idUsuario: 'u1', idOpcion: 'op1');
@@ -73,6 +92,7 @@ void main() {
     expect(ganadores.first.id, 'op1');
   });
 
+  // RONDA 6
   test('si hay empate, determinarGanador regresa mas de una opcion', () {
     final votacion = Votacion(
       pregunta: 'Pregunta de prueba',
@@ -93,13 +113,15 @@ void main() {
     expect(ganadores.length, 3);
   });
 
+  // RONDA 7
   test('no se puede votar si la votacion ya cerro', () {
     final votacionCerrada = _crearVotacionDePrueba(
       fechaCierre: DateTime(2000, 1, 1), // una fecha muy en el pasado
     );
     final servicio = ServicioVotacion(votacionCerrada);
 
-    final resultado = servicio.registrarVoto(idUsuario: 'user1', idOpcion: 'op1');
+    final resultado =
+        servicio.registrarVoto(idUsuario: 'user1', idOpcion: 'op1');
 
     expect(resultado, ResultadoVoto.votacionCerrada);
     expect(votacionCerrada.opciones[0].votos, 0);
@@ -111,18 +133,23 @@ void main() {
     );
     final servicio = ServicioVotacion(votacionAbierta);
 
-    final resultado = servicio.registrarVoto(idUsuario: 'user1', idOpcion: 'op1');
+    final resultado =
+        servicio.registrarVoto(idUsuario: 'user1', idOpcion: 'op1');
 
     expect(resultado, ResultadoVoto.exitoso);
   });
 
-  test('simulacion completa: varios vecinos votan y se determina un ganador', () {
+  // PRUEBA DE INTEGRACION
+  test('simulacion completa: varios vecinos votan y se determina un ganador',
+      () {
     final votacion = Votacion(
       pregunta: 'Que obra prioritaria debe realizar el municipio?',
       opciones: [
-        OpcionVotacion(id: 'jardin', texto: 'Rehabilitacion del Jardin Principal'),
+        OpcionVotacion(
+            id: 'jardin', texto: 'Rehabilitacion del Jardin Principal'),
         OpcionVotacion(id: 'biblioteca', texto: 'Nueva Biblioteca Digital'),
-        OpcionVotacion(id: 'alumbrado', texto: 'Alumbrado en el Barrio de Analco'),
+        OpcionVotacion(
+            id: 'alumbrado', texto: 'Alumbrado en el Barrio de Analco'),
       ],
       fechaCierre: DateTime.now().add(const Duration(days: 3)),
     );
@@ -131,18 +158,16 @@ void main() {
     servicio.registrarVoto(idUsuario: 'vecino1', idOpcion: 'jardin');
     servicio.registrarVoto(idUsuario: 'vecino2', idOpcion: 'jardin');
     servicio.registrarVoto(idUsuario: 'vecino3', idOpcion: 'biblioteca');
-    servicio.registrarVoto(idUsuario: 'vecino1', idOpcion: 'alumbrado'); // repetido: no debe contar
+    servicio.registrarVoto(
+        idUsuario: 'vecino1', idOpcion: 'alumbrado'); // repetido: no cuenta
 
     final resultados = servicio.obtenerResultados();
-    final totalVotos = resultados.fold<double>(0, (s, r) => s + r.opcion.votos);
+    final totalVotos =
+        resultados.fold<double>(0, (s, r) => s + r.opcion.votos);
     final ganadores = servicio.determinarGanador();
 
     expect(totalVotos, 3); // el intento repetido de vecino1 no debio contar
     expect(ganadores.length, 1);
     expect(ganadores.first.id, 'jardin');
   });
-
-
 }
-
-

@@ -1,0 +1,23 @@
+# Comando: flutter test test/servicio_votacion_test.dart
+# Fecha: 2026-11-18 17:15:25
+# Autor: Diegue83
+
+00:00 +0: loading C:/Users/52418/OneDrive/Documentos/AppsMobilesIn/vota_dolores_hidalgo/test/servicio_votacion_test.dart
+test/servicio_votacion_test.dart:5:8: Error: Error when reading 'lib/logica/servicio_votacion.dart': El sistema no puede encontrar el archivo especificado
+import 'package:vota_dolores_hidalgo/logica/servicio_votacion.dart';
+       ^
+test/servicio_votacion_test.dart:22:22: Error: Method not found: 'ServicioVotacion'.
+    final servicio = ServicioVotacion(votacion);
+                     ^^^^^^^^^^^^^^^^
+00:00 +0 -1: loading C:/Users/52418/OneDrive/Documentos/AppsMobilesIn/vota_dolores_hidalgo/test/servicio_votacion_test.dart [E]
+  Failed to load "C:/Users/52418/OneDrive/Documentos/AppsMobilesIn/vota_dolores_hidalgo/test/servicio_votacion_test.dart":
+  Compilation failed for testPath=C:/Users/52418/OneDrive/Documentos/AppsMobilesIn/vota_dolores_hidalgo/test/servicio_votacion_test.dart: test/servicio_votacion_test.dart:5:8: Error: Error when reading 'lib/logica/servicio_votacion.dart': El sistema no puede encontrar el archivo especificado
+  import 'package:vota_dolores_hidalgo/logica/servicio_votacion.dart';
+         ^
+  test/servicio_votacion_test.dart:22:22: Error: Method not found: 'ServicioVotacion'.
+      final servicio = ServicioVotacion(votacion);
+                       ^^^^^^^^^^^^^^^^
+  .
+00:00 +0 -1: Some tests failed.
+
+# Codigo de salida: 1

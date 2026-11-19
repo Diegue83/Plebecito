@@ -1,16 +1,22 @@
-import 'package:vota_dolores_hidalgo/logica/resultado_voto.dart';
-import 'package:vota_dolores_hidalgo/modelos/resultado_opcion.dart';
-
 import '../modelos/votacion.dart';
 import '../modelos/opcion_votacion.dart';
+import '../modelos/resultado_opcion.dart';
+import 'resultado_voto.dart';
 
 class ServicioVotacion {
   final Votacion votacion;
+
   ServicioVotacion(this.votacion);
 
-  ResultadoVoto registrarVoto({required String idUsuario, required String idOpcion}) {
-    if (DateTime.now().isAfter(votacion.fechaCierre)) return ResultadoVoto.votacionCerrada;
-    if (votacion.votantes.contains(idUsuario)) return ResultadoVoto.usuarioYaVoto;
+  ResultadoVoto registrarVoto({
+    required String idUsuario,
+    required String idOpcion,
+  }) {
+    final yaCerro = DateTime.now().isAfter(votacion.fechaCierre);
+    if (yaCerro) return ResultadoVoto.votacionCerrada;
+
+    final yaVoto = votacion.votantes.contains(idUsuario);
+    if (yaVoto) return ResultadoVoto.usuarioYaVoto;
 
     final opcion = _buscarOpcion(idOpcion);
     if (opcion == null) return ResultadoVoto.opcionInvalida;
@@ -36,10 +42,9 @@ class ServicioVotacion {
   }
 
   List<OpcionVotacion> determinarGanador() {
-    final maxVotos = votacion.opciones.map((o) => o.votos).reduce((a, b) => a > b ? a : b);
+    final maxVotos = votacion.opciones
+        .map((o) => o.votos)
+        .reduce((a, b) => a > b ? a : b);
     return votacion.opciones.where((o) => o.votos == maxVotos).toList();
   }
-  
-
 }
-
