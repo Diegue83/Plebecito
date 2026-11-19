@@ -12,6 +12,9 @@ class ServicioVotacion {
     required String idUsuario,
     required String idOpcion,
   }) {
+    if (DateTime.now().isAfter(votacion.fechaCierre)) {
+      return ResultadoVoto.votacionCerrada;
+    }
     if (votacion.votantes.contains(idUsuario)) {
       return ResultadoVoto.usuarioYaVoto;
     }
