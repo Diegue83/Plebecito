@@ -11,9 +11,13 @@ class ServicioVotacion {
     required String idUsuario,
     required String idOpcion,
   }) {
+    if (votacion.votantes.contains(idUsuario)) {
+      return ResultadoVoto.usuarioYaVoto;
+    }
     final opcion = _buscarOpcion(idOpcion);
     if (opcion == null) return ResultadoVoto.opcionInvalida;
     opcion.votos++;
+    votacion.votantes.add(idUsuario);
     return ResultadoVoto.exitoso;
   }
 
