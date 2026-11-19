@@ -2,6 +2,51 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "TDD: siguiente paso",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/tool/tdd_paso.ps1"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "clear": true,
+        "showReuseMessage": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "TDD: reiniciar",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/tool/tdd_paso.ps1",
+        "-Reiniciar"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "clear": true,
+        "showReuseMessage": false
+      },
+      "problemMatcher": []
+    },
+    {
       "label": "TDD: todas las pruebas",
       "type": "shell",
       "command": "flutter",
