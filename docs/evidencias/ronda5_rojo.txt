@@ -1,0 +1,21 @@
+# Comando: flutter test test/servicio_votacion_test.dart
+# Fecha: 2026-11-18 19:08:55
+# Autor: Diegue83
+
+00:00 +0: loading C:/Users/52418/OneDrive/Documentos/AppsMobilesIn/vota_dolores_hidalgo/test/servicio_votacion_test.dart
+test/servicio_votacion_test.dart:89:32: Error: The method 'determinarGanador' isn't defined for the type 'ServicioVotacion'.
+ - 'ServicioVotacion' is from 'package:vota_dolores_hidalgo/logica/servicio_votacion.dart' ('lib/logica/servicio_votacion.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'determinarGanador'.
+    final ganadores = servicio.determinarGanador();
+                               ^^^^^^^^^^^^^^^^^
+00:00 +0 -1: loading C:/Users/52418/OneDrive/Documentos/AppsMobilesIn/vota_dolores_hidalgo/test/servicio_votacion_test.dart [E]
+  Failed to load "C:/Users/52418/OneDrive/Documentos/AppsMobilesIn/vota_dolores_hidalgo/test/servicio_votacion_test.dart":
+  Compilation failed for testPath=C:/Users/52418/OneDrive/Documentos/AppsMobilesIn/vota_dolores_hidalgo/test/servicio_votacion_test.dart: test/servicio_votacion_test.dart:89:32: Error: The method 'determinarGanador' isn't defined for the type 'ServicioVotacion'.
+   - 'ServicioVotacion' is from 'package:vota_dolores_hidalgo/logica/servicio_votacion.dart' ('lib/logica/servicio_votacion.dart').
+  Try correcting the name to the name of an existing method, or defining a method named 'determinarGanador'.
+      final ganadores = servicio.determinarGanador();
+                                 ^^^^^^^^^^^^^^^^^
+  .
+00:00 +0 -1: Some tests failed.
+
+# Codigo de salida: 1
