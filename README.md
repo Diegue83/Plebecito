@@ -53,8 +53,6 @@ El código se copió del manual ronda por ronda y, en cada paso, se ejecutó en 
 flutter test test/servicio_votacion_test.dart --reporter expanded
 ```
 
-Cada captura muestra el resultado en la terminal y la cuenta **Diegue83 (GitHub)** con sesión iniciada en VS Code.
-
 | Paso | Resultado | Captura |
 | ---- | --------- | :-----: |
 | Ronda 1 – Rojo | ❌ No compila: `ServicioVotacion` no existe | [01](docs/capturas_vscode/01_ronda1_rojo.jpg) |
