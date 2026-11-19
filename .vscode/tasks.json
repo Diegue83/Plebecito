@@ -1,0 +1,171 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "TDD: todas las pruebas",
+      "type": "shell",
+      "command": "flutter",
+      "args": [
+        "test",
+        "test/servicio_votacion_test.dart",
+        "--reporter",
+        "expanded"
+      ],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "TDD: Ronda 1",
+      "type": "shell",
+      "command": "flutter",
+      "args": [
+        "test",
+        "test/servicio_votacion_test.dart",
+        "--reporter",
+        "expanded",
+        "--plain-name",
+        "registrar un voto valido incrementa el contador de esa opcion"
+      ],
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "TDD: Ronda 2",
+      "type": "shell",
+      "command": "flutter",
+      "args": [
+        "test",
+        "test/servicio_votacion_test.dart",
+        "--reporter",
+        "expanded",
+        "--plain-name",
+        "votar por una opcion que no existe regresa opcionInvalida"
+      ],
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "TDD: Ronda 3",
+      "type": "shell",
+      "command": "flutter",
+      "args": [
+        "test",
+        "test/servicio_votacion_test.dart",
+        "--reporter",
+        "expanded",
+        "--plain-name",
+        "un mismo usuario no puede votar dos veces"
+      ],
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "TDD: Ronda 4a",
+      "type": "shell",
+      "command": "flutter",
+      "args": [
+        "test",
+        "test/servicio_votacion_test.dart",
+        "--reporter",
+        "expanded",
+        "--plain-name",
+        "calcula el porcentaje de cada opcion correctamente"
+      ],
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "TDD: Ronda 4b",
+      "type": "shell",
+      "command": "flutter",
+      "args": [
+        "test",
+        "test/servicio_votacion_test.dart",
+        "--reporter",
+        "expanded",
+        "--plain-name",
+        "si no hay ningun voto, todos los porcentajes son 0"
+      ],
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "TDD: Ronda 5",
+      "type": "shell",
+      "command": "flutter",
+      "args": [
+        "test",
+        "test/servicio_votacion_test.dart",
+        "--reporter",
+        "expanded",
+        "--plain-name",
+        "determinarGanador regresa la opcion con mas votos"
+      ],
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "TDD: Ronda 6",
+      "type": "shell",
+      "command": "flutter",
+      "args": [
+        "test",
+        "test/servicio_votacion_test.dart",
+        "--reporter",
+        "expanded",
+        "--plain-name",
+        "si hay empate, determinarGanador regresa mas de una opcion"
+      ],
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "TDD: Ronda 7a",
+      "type": "shell",
+      "command": "flutter",
+      "args": [
+        "test",
+        "test/servicio_votacion_test.dart",
+        "--reporter",
+        "expanded",
+        "--plain-name",
+        "no se puede votar si la votacion ya cerro"
+      ],
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "TDD: Ronda 7b",
+      "type": "shell",
+      "command": "flutter",
+      "args": [
+        "test",
+        "test/servicio_votacion_test.dart",
+        "--reporter",
+        "expanded",
+        "--plain-name",
+        "si la votacion sigue abierta, el voto se registra normalmente"
+      ],
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "TDD: Integracion",
+      "type": "shell",
+      "command": "flutter",
+      "args": [
+        "test",
+        "test/servicio_votacion_test.dart",
+        "--reporter",
+        "expanded",
+        "--plain-name",
+        "simulacion completa: varios vecinos votan y se determina un ganador"
+      ],
+      "group": "test",
+      "problemMatcher": []
+    }
+  ]
+}
