@@ -60,7 +60,13 @@
         "kind": "test",
         "isDefault": true
       },
-      "problemMatcher": []
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true,
+        "showReuseMessage": false
+      }
     },
     {
       "label": "TDD: Ronda 1",
