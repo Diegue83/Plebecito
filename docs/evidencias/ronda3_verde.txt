@@ -1,0 +1,11 @@
+# Comando: flutter test test/servicio_votacion_test.dart
+# Fecha: 2026-11-18 19:07:50
+# Autor: Diegue83
+
+00:00 +0: loading C:/Users/52418/OneDrive/Documentos/AppsMobilesIn/vota_dolores_hidalgo/test/servicio_votacion_test.dart
+00:00 +0: registrar un voto valido incrementa el contador de esa opcion
+00:00 +1: votar por una opcion que no existe regresa opcionInvalida
+00:00 +2: un mismo usuario no puede votar dos veces
+00:00 +3: All tests passed!
+
+# Codigo de salida: 0
