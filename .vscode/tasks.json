@@ -63,8 +63,7 @@
       "problemMatcher": [],
       "presentation": {
         "reveal": "always",
-        "panel": "dedicated",
-        "clear": true,
+        "panel": "new",
         "showReuseMessage": false
       }
     },
